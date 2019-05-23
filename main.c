@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
 		printf("%2d %3d %3d\n", x, gE, gS);
 	}
 	
+	printf("Lista de adjacencias\n");
 	printf(" V  gE  gS\n");
 	for (x = 0; x < numVertices; x++) {
 		grausLista(ADJACENCIAS, numVertices, x, &gE, &gS);

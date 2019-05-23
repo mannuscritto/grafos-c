@@ -80,19 +80,11 @@ int grausLista(LISTAADJ *l, int numVertices, int v, int *gE, int *gS) {
 	*gS = 0;
 	
 	for (x = 0; x < numVertices; x++) {
-		//printf("Passou\n");
 		t = l[x];
-		
-		if ((t != NULL) && (t->vertice == v)) {
-			while (t != NULL) {
-				*gE = *gE + 1;
-				t = t->prox;
-			}
-			t = l[x]->prox;
-		}
-		
 		while (t != NULL) {
 			if (t->vertice == v)
+				*gE = *gE + 1;
+			if (x == v)
 				*gS = *gS + 1;
 			t = t->prox;
 		}
