@@ -1,9 +1,9 @@
 [Project]
-FileName=grafos.dev
-Name=grafos
-UnitCount=6
+FileName=MatrizAdj.dev
+Name=MatrizAdj
+UnitCount=3
 Type=1
-Ver=1
+Ver=2
 ObjFiles=
 Includes=
 Libs=
@@ -28,19 +28,11 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=
-
-[Unit1]
-FileName=main.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
+LogOutput=
+LogOutputEnabled=0
 
 [Unit2]
-FileName=graf-listadj.h
+FileName=grafo.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -50,7 +42,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=graf-matrizadj.h
+FileName=grafo.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -59,8 +51,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit4]
-FileName=parametros.h
+[Unit1]
+FileName=main.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -86,24 +78,5 @@ OriginalFilename=
 ProductName=
 ProductVersion=
 AutoIncBuildNr=0
-
-[Unit5]
-FileName=graf-matrizadj.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit6]
-FileName=graf-listadj.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
+SyncProduct=0
 
