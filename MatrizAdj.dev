@@ -3,7 +3,7 @@ FileName=MatrizAdj.dev
 Name=MatrizAdj
 UnitCount=3
 Type=1
-Ver=2
+Ver=1
 ObjFiles=
 Includes=
 Libs=
@@ -28,8 +28,6 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=
-LogOutput=
-LogOutputEnabled=0
 
 [Unit2]
 FileName=grafo.h
@@ -78,5 +76,4 @@ OriginalFilename=
 ProductName=
 ProductVersion=
 AutoIncBuildNr=0
-SyncProduct=0
 
