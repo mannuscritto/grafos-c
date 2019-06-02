@@ -120,7 +120,7 @@ bool ObterPesoAresta(unsigned V1, unsigned V2, TipoGrafo *Grafo, int *Peso)
   }
 
   *Peso = Grafo->Mat[V1][V2];
-  return false;
+  return true;
 }
 
 bool ObterListaAdjacencias(unsigned V1, TipoGrafo *Grafo,
