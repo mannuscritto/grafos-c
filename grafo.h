@@ -8,6 +8,7 @@
 typedef struct __TipoGrafo
 {
   int Mat[MAXNUMVERTICES][MAXNUMVERTICES];
+  char label[MAXNUMVERTICES][30];
   unsigned MaxVertices;
   unsigned NumVertices;
   unsigned NumArestas;
