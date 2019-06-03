@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 	if (percurso2.DAG) {
 		printf("Ordem Topologica: ");
 		for (y = 0; y < percurso2.NumDestinos; y++) {
-			printf("%d ", percurso2.OrdemTopologica[y]);
+			printf("%s ", grafo.label[percurso2.OrdemTopologica[y]]);
 		}
 		printf("\n");
 	}
