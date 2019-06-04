@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "grafo.h"
 
 int main(int argc, char *argv[]) {
@@ -22,7 +23,7 @@ int main(int argc, char *argv[]) {
 	for (y = 0; y < grafo.MaxVertices; y++) {
 		printf("Digite o rotulo do vertice %d: ", y+1);
 		scanf("%s", grafo.label[y]);
-		if (grafo.label[y][0] != 0) {
+		if (strcmp(grafo.label[y], "fim") != 0) {
 			grafo.NumVertices = grafo.NumVertices + 1;
 		} else {
 			break;
@@ -42,12 +43,12 @@ int main(int argc, char *argv[]) {
 	
 	PercursoProfundidade (0, &grafo, &percurso2, 1);
 	printf("  V Cor Des Ter Pai\n");
-	for (y = 0; y < grafo.MaxVertices; y++)
-		printf("%3s %3d %3d %3d %3d\n", grafo.label[y], 
+	for (y = 0; y < grafo.NumVertices; y++)
+		printf("%3s %3d %3d %3d %3s\n", grafo.label[y], 
 											percurso2.vertex[y].cor,
 											percurso2.vertex[y].descoberta,
 											percurso2.vertex[y].termino,
-											percurso2.vertex[y].pai);
+											percurso2.vertex[y].pai != -1 ? grafo.label[percurso2.vertex[y].pai] : "-1");
 	
 	if (percurso2.DAG) {
 		printf("Ordem Topologica: ");

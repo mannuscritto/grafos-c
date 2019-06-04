@@ -258,19 +258,19 @@ void PercursoProfundidade (unsigned V1, TipoGrafo *Grafo, PercursoDFS *dfs, shor
 	if (!todos) {
 		_PP(V1, Grafo, dfs, &relogio, -1);		
 	} else {
-		for (i = 0; i < Grafo->MaxVertices; i++) {
+		for (i = 0; i < Grafo->NumVertices; i++) {
 			if (dfs->vertex[i].cor == BRANCO)
 				_PP(i, Grafo, dfs, &relogio, -1);
 		}
 	}
 	
   if (dfs->DAG) {
-  	delta = Grafo->MaxVertices - dfs->NumDestinos;
+  	delta = Grafo->NumVertices - dfs->NumDestinos;
   	
   	for (i = 0; i < dfs->NumDestinos; i++) {
   		dfs->OrdemTopologica[i]	= dfs->OrdemTopologica[i + delta];
 	}
-	for (; i < Grafo->MaxVertices; i++) {
+	for (; i < Grafo->NumVertices; i++) {
 		dfs->OrdemTopologica[i] = -1;
 	}
   }
@@ -309,7 +309,7 @@ void  _PP (unsigned vertice, TipoGrafo *Grafo, PercursoDFS *dfs,
    dfs->NumDestinos = dfs->NumDestinos + 1;
    *relogio = *relogio + 1;
    dfs->vertex[vertice].termino = *relogio;
-   dfs->OrdemTopologica[Grafo->MaxVertices - dfs->NumDestinos] = vertice;
+   dfs->OrdemTopologica[Grafo->NumVertices - dfs->NumDestinos] = vertice;
 
    return;   
 }
