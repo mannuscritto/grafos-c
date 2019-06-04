@@ -43,7 +43,8 @@ int main(int argc, char *argv[]) {
 	PercursoProfundidade (0, &grafo, &percurso2, 1);
 	printf("  V Cor Des Ter Pai\n");
 	for (y = 0; y < grafo.MaxVertices; y++)
-		printf("%3d %3d %3d %3d %3d\n", y, 	percurso2.vertex[y].cor,
+		printf("%3s %3d %3d %3d %3d\n", grafo.label[y], 
+											percurso2.vertex[y].cor,
 											percurso2.vertex[y].descoberta,
 											percurso2.vertex[y].termino,
 											percurso2.vertex[y].pai);

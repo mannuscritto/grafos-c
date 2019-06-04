@@ -89,18 +89,18 @@ void ImprimeGrafo(TipoGrafo *Grafo)
   unsigned i, j;
   printf("   ");
 
-  for (i = 0; i < Grafo->MaxVertices; i++)
+  for (i = 0; i < Grafo->NumVertices; i++)
   {
-    printf("%3d", i);
+    printf("%3s", Grafo->label[i]);
   }
 
   printf("\n");
 
-  for (i = 0; i < Grafo->MaxVertices; i++)
+  for (i = 0; i < Grafo->NumVertices; i++)
   {
-    printf("%3d", i);
+    printf("%3s", Grafo->label[i]);
 
-    for (j = 0; j < Grafo->MaxVertices; j++)
+    for (j = 0; j < Grafo->NumVertices; j++)
     {
       printf("%3d", Grafo->Mat[i][j]);
     }
