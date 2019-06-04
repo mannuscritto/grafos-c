@@ -1,11 +1,12 @@
-7
-A
-B
-C
-D
-E
-F
-G
+17
+Abacate
+Banana
+Cenoura
+Damasco
+Enxada
+Farinha
+Galinha
+fim
 0 6 1
 6 1 1
 1 3 1
@@ -13,3 +14,17 @@ G
 5 4 1
 4 2 1
 -1 -1 -1
+
+7
+A
+B
+C
+D
+0 6 1
+6 1 1
+1 3 1
+3 5 1
+5 4 1
+4 2 1
+-1 -1 -1
+
