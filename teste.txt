@@ -1,11 +1,11 @@
 17
-Abacate
-Banana
-Cenoura
-Damasco
-Enxada
-Farinha
-Galinha
+A
+B
+C
+D
+E
+F
+G
 fim
 0 6 1
 6 1 1
