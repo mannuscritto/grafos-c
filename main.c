@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 	
 	for (y = 0; y < grafo.MaxVertices; y++) {
 		printf("Digite o rotulo do vertice %d: ", y+1);
-		scanf("%s", temp);
+		scanf(" %[^\n]", temp);
 		if (strcmp(temp, "fim") != 0) {
 			grafo.label[y] = (char *) calloc (strlen(temp), sizeof(char));
 			strcpy(grafo.label[y], temp);
