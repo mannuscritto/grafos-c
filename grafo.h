@@ -8,7 +8,7 @@
 typedef struct __TipoGrafo
 {
   int Mat[MAXNUMVERTICES][MAXNUMVERTICES];
-  char label[MAXNUMVERTICES][30];
+  char **label;
   unsigned MaxVertices;
   unsigned NumVertices;
   unsigned NumArestas;
@@ -59,6 +59,7 @@ typedef struct __PercursoProfundidade
 } PercursoDFS;
 
 bool FGVazio(TipoGrafo *, unsigned);
+bool FreeGrafo(TipoGrafo *);
 bool InsereAresta(unsigned, unsigned, int, TipoGrafo *, bool);
 bool ExisteAresta(unsigned, unsigned, TipoGrafo *);
 bool ObterPesoAresta(unsigned, unsigned, TipoGrafo *, int *);

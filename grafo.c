@@ -22,8 +22,18 @@ bool FGVazio(TipoGrafo *Grafo, unsigned max)
     {
       Grafo->Mat[i][j] = 0;
     }
+	
+	Grafo->label = (char**) calloc (MAXNUMVERTICES, sizeof(char *));
 
   return true;
+}
+
+bool FreeGrafo(TipoGrafo *Grafo) {
+	int i;
+	for (i = 0; i < Grafo->NumArestas; i++)
+		free(Grafo->label[i]);
+	free(Grafo->label);
+	return true;
 }
 
 bool InsereAresta(unsigned V1, unsigned V2, int Peso, TipoGrafo *Grafo,

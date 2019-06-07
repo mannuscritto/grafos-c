@@ -13,12 +13,12 @@ LeftChar=1
 Open=1
 Top=0
 [Editors]
-Focused=2
+Focused=0
 Order=0,2,1
 [Editor_0]
 Open=1
 Top=1
-CursorCol=49
-CursorRow=31
-TopLine=1
+CursorCol=44
+CursorRow=26
+TopLine=10
 LeftChar=1

@@ -20,10 +20,14 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 
+	char temp[30];
+	
 	for (y = 0; y < grafo.MaxVertices; y++) {
 		printf("Digite o rotulo do vertice %d: ", y+1);
-		scanf("%s", grafo.label[y]);
-		if (strcmp(grafo.label[y], "fim") != 0) {
+		scanf("%s", temp);
+		if (strcmp(temp, "fim") != 0) {
+			grafo.label[y] = (char *) calloc (strlen(temp), sizeof(char));
+			strcpy(grafo.label[y], temp);
 			grafo.NumVertices = grafo.NumVertices + 1;
 		} else {
 			break;
@@ -56,6 +60,11 @@ int main(int argc, char *argv[]) {
 			printf("%s ", grafo.label[percurso2.OrdemTopologica[y]]);
 		}
 		printf("\n");
+	}
+	
+	if (!FreeGrafo(&grafo)) {
+		printf("Erro ao limpar Grafo!\n");
+		exit(5);
 	}
 	
 	system("PAUSE");
