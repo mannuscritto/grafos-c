@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
 
 	char temp[30];
 	
+	printf("\tDigite fim para terminar\n");
 	for (y = 0; y < grafo.MaxVertices; y++) {
 		printf("Digite o rotulo do vertice %d: ", y+1);
 		scanf(" %[^\n]", temp);
