@@ -23,7 +23,7 @@ bool FGVazio(TipoGrafo *Grafo, unsigned max)
       Grafo->Mat[i][j] = 0;
     }
 	
-	Grafo->label = (char**) calloc (MAXNUMVERTICES, sizeof(char *));
+	Grafo->label = (char**) calloc (max, sizeof(char *));
 
   return true;
 }
