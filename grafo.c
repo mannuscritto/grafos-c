@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <stdbool.h>
+#include <limits.h>
 #include "grafo.h"
 
 bool FGVazio(TipoGrafo *Grafo, unsigned max)
@@ -203,7 +204,7 @@ void  PercursoLargura (unsigned V1, TipoGrafo *Grafo, PercursoBFS *bfs)
   if ((V1 > Grafo->MaxVertices) || (V1 < 0))
     return;
   
-  fila = (unsigned *) malloc (Grafo->MaxVertices * sizeof(unsigned));
+  fila = (unsigned *) calloc (Grafo->MaxVertices, sizeof(unsigned));
   inicio = final = 0;
   
   for (i = 0; i < Grafo->MaxVertices; i++)
@@ -245,7 +246,7 @@ void  PercursoLargura (unsigned V1, TipoGrafo *Grafo, PercursoBFS *bfs)
 }
 
 
-void PercursoProfundidade (unsigned V1, TipoGrafo *Grafo, PercursoDFS *dfs, short todos)
+void PercursoProfundidade (unsigned V1, TipoGrafo *Grafo, PercursoDFS *dfs, bool todos)
 {
   unsigned i;
   unsigned relogio;
@@ -323,3 +324,100 @@ void  _PP (unsigned vertice, TipoGrafo *Grafo, PercursoDFS *dfs,
 
    return;   
 }
+
+void executar(unsigned V1, unsigned V2, AlgoritmoDijkstra *AD, TipoGrafo *G) {
+	AD->Origem = V1;
+	AD->Destino = V2;
+	AD->NumProc = 0;
+	TipoListaAdjGrafo adjacentes;
+	int i, v, u, custo;
+	for (v = 0; v < G->NumVertices; v++) {
+		AD->vertex[v].dist = INT_MAX;
+		AD->vertex[v].prev = -1;
+		AD->vertex[v].cor = BRANCO;
+	}
+	
+	AD->vertex[V1].dist = 0;
+	
+	while (AD->NumProc < G->NumVertices) {
+		if (!encontrarDistanciasMinimas(AD, G, &u)) {
+			printf("Erro ao encontrar vertice com menor distancia\n");
+			exit(1);
+		}
+		
+		AD->vertex[u].cor = CINZA;
+		
+		if (!ObterListaAdjacencias(u, G, &adjacentes)) {
+			printf("Erro ao obter lista de vertices adjacentes\n");
+			exit(2);
+		}
+		
+		for (i = 0; i < adjacentes.NumAdjacentes; i++) {
+			v = adjacentes.Lista[i][0];
+			custo = adjacentes.Lista[i][1];
+						
+			if (AD->vertex[v].cor == BRANCO) {
+				int alt = AD->vertex[u].dist + custo;
+				if (alt < AD->vertex[v].dist) {
+					printf("%s.dist(%d) + custo(%d) é menor que %s.dist(%d)\n", G->label[u], AD->vertex[u].dist, custo,  G->label[v], AD->vertex[v].dist);
+					AD->vertex[v].dist = alt;
+					AD->vertex[v].prev = u;
+				}
+			}
+		}	
+		
+		AD->vertex[u].cor = PRETO;
+		AD->NumProc = AD->NumProc + 1;
+	}
+	
+	obterCaminho(AD, G);
+}
+
+bool encontrarDistanciasMinimas(AlgoritmoDijkstra *AD, TipoGrafo *G, unsigned *u) {
+	int i;
+	*u = -1;
+	for (i = 0; i < G->NumVertices; i++) {
+		if (AD->vertex[i].cor == BRANCO)
+			if (*u == -1) {
+				*u = i;
+			} else if (AD->vertex[i].dist < INT_MAX) {
+				*u = i;
+			}
+	}
+
+	return true;
+}
+
+void obterCaminho(AlgoritmoDijkstra *AD, TipoGrafo *G) {
+	int S[G->NumVertices];
+	int topo;
+	int u = AD->Destino;
+	topo = -1;
+
+	if (AD->vertex[u].prev != -1 || u == AD->Origem) {
+		while (u != -1) {
+			S[++topo] = u;
+			u = AD->vertex[u].prev;
+		}
+	}
+	
+	int i = topo;
+	printf("Da ORIGEM %s até destino %s => %d passo%S\n", G->label[AD->Origem], 
+			G->label[AD->Destino], 
+			topo, 
+			topo > 1 ? "s" : "");
+	while (topo > -1) {
+		if (topo < i) {
+			printf("%2d) %s => %s\n", i-topo-1, G->label[S[topo]], G->label[S[topo--]]);
+		} else {
+			printf("%2d) %s\n", i-topo-1, G->label[S[topo--]]);
+		}
+		
+	}
+		
+}
+
+
+
+
+

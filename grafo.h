@@ -58,6 +58,25 @@ typedef struct __PercursoProfundidade
    unsigned OrdemTopologica[MAXNUMVERTICES];
 } PercursoDFS;
 
+typedef struct __RegistroDijkstra
+{
+  TipoCor cor;
+  int prev;
+  int dist;
+} RegistroDijkstra;
+
+typedef struct {
+	RegistroDijkstra vertex[MAXNUMVERTICES];
+	unsigned Origem;
+	unsigned Destino;
+	int NumProc;
+} AlgoritmoDijkstra;
+
+//Funcoes para algoritmo Dijkstra
+void executar(unsigned, unsigned, AlgoritmoDijkstra *, TipoGrafo *);
+bool encontrarDistanciasMinimas(AlgoritmoDijkstra *, TipoGrafo *, unsigned *);
+void obterCaminho(AlgoritmoDijkstra *, TipoGrafo *);
+
 bool FGVazio(TipoGrafo *, unsigned);
 bool FreeGrafo(TipoGrafo *);
 bool InsereAresta(unsigned, unsigned, int, TipoGrafo *, bool);
@@ -65,9 +84,9 @@ bool ExisteAresta(unsigned, unsigned, TipoGrafo *);
 bool ObterPesoAresta(unsigned, unsigned, TipoGrafo *, int *);
 bool RetiraAresta(unsigned, unsigned, int *, TipoGrafo *, bool);
 bool ObterListaAdjacencias(unsigned, TipoGrafo *, TipoListaAdjGrafo *);
-void  ImprimeGrafo(TipoGrafo *);
+void ImprimeGrafo(TipoGrafo *);
 bool ObterGrauNo(unsigned, TipoGrafo *, unsigned *, unsigned *);
 void  PercursoLargura (unsigned, TipoGrafo *, PercursoBFS *);
-void  PercursoProfundidade (unsigned, TipoGrafo *, PercursoDFS *, short); 
+void  PercursoProfundidade (unsigned, TipoGrafo *, PercursoDFS *, bool); 
 void  _PP (unsigned, TipoGrafo *, PercursoDFS *, unsigned *, unsigned);
 #endif
